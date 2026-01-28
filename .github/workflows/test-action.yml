@@ -24,7 +24,7 @@ jobs:
       # For example: 'actions/setup-node@v3'
       # ===================================================================
       - name: Run My Custom Action
-        uses: vishnudas111/pmat-action@v1.0.0
+        uses: vishnudas111/pmat-action@v1.0.1
         with:
           max-cyclomatic: 20
           fail-on-violation: true
