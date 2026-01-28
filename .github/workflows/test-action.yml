@@ -1,0 +1,38 @@
+name: Test My Action
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
+
+jobs:
+  test-action:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # ===================================================================
+      # IMPORTANT: This is where you use your action.
+      #
+      # Replace 'YOUR_USERNAME/YOUR_REPOSITORY_NAME@v1' below with the
+      # identifier of your action from the GitHub Marketplace.
+      # For example: 'actions/setup-node@v3'
+      # ===================================================================
+      - name: Run My Custom Action
+        uses: vishnudas111/pmat-action@v1
+        with:
+	max-cyclomatic: 20
+	fail-on-violation: true
+	 comment-on-pr: true
+          # Add any inputs your action requires here.
+          # For example, many actions need a GitHub token:
+          #   github-token: ${{ secrets.GITHUB_TOKEN }}
+          #
+          # If your action has other inputs, add them below:
+          #   input-name: 'some-value'
+	
+
+      - name: Run a test script
+        run: node index.js
