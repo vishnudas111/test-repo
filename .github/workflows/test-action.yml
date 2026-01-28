@@ -1,14 +1,17 @@
 name: Test My Action
 
 on:
+  pull_request:
+    branches:
+      - "**"   # any target branch
   push:
     branches:
-      - main
-  workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
+      - "**"    
 
 jobs:
   test-action:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -23,16 +26,10 @@ jobs:
       - name: Run My Custom Action
         uses: vishnudas111/pmat-action@v1
         with:
-	max-cyclomatic: 20
-	fail-on-violation: true
-	 comment-on-pr: true
-          # Add any inputs your action requires here.
-          # For example, many actions need a GitHub token:
-          #   github-token: ${{ secrets.GITHUB_TOKEN }}
-          #
-          # If your action has other inputs, add them below:
-          #   input-name: 'some-value'
-	
+          max-cyclomatic: 20
+          fail-on-violation: true
+          comment-on-pr: true
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run a test script
         run: node index.js
