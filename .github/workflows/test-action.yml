@@ -3,10 +3,7 @@ name: Test My Action
 on:
   pull_request:
     branches:
-      - "**"   # any target branch
-  push:
-    branches:
-      - "**"    
+      - "main"   # any target branch 
 
 jobs:
   test-action:
